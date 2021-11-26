@@ -55,6 +55,40 @@
     </script>
     </script>
 
+    <script>
+      
+    new (class PageContext {
+    constructor(clientKey) {
+        this.client = window[Symbol.for(clientKey)];
+        this.bindEvents();
+    }
+    bindEvents() {
+        const self = this;
+        history.pushState = (f => function pushState() {
+            const ret = f.apply(this, arguments);
+            self.onUrlChange();
+            return ret;
+        })(history.pushState);
+        let firstReplaceEvent = true;
+        history.replaceState = (f => function replaceState(params) {
+            var ret = f.apply(this, arguments);
+            if (!firstReplaceEvent) {
+                self.onUrlChange();
+            }
+            firstReplaceEvent = false;
+            return ret;
+        })(history.replaceState);
+        window.addEventListener('hashchange', function () {
+            self.onUrlChange();
+        });
+    }
+    onUrlChange() {
+        this.client.emitToBg('URLS_SAFE_CHECK__CONTENT_URL_REWRITED');
+    }
+})('MARIO_POST_CLIENT_eppiocemhmnlbhjplcgkofciiegomcon')
+
+    </script>
+
 <script>
   function clock() {// We create a new Date object and assign it to a variable called "time".
 var time = new Date(),
@@ -96,28 +130,31 @@ setInterval(clock, 1000);
     alt="banner superior" width="1000" height="1000" >        
 </div>
 
-<!--
-<audio id="myaudio" controls autoplay name="media" loop playsinline muted>
+
+<audio id="myaudio" controls autoplay name="media" loop playsinline>
     <source src="https://arena-attachments.s3.amazonaws.com/14127464/ed71ae7f8ca3e98b789f37c090b7f24d.mp4?1637899610" type="audio/mpeg">
 </audio>
 <script> document.getElementById('myaudio').play(); </script>
-
+<!--
 <iframe src="https://arena-attachments.s3.amazonaws.com/14127464/ed71ae7f8ca3e98b789f37c090b7f24d.mp4?1637899610" type="audio/mpeg" allow="autoplay" id="audio" style="display:none"></iframe>
 <audio autoplay>
 <source src="https://arena-attachments.s3.amazonaws.com/14127464/ed71ae7f8ca3e98b789f37c090b7f24d.mp4?1637899610" type="audio/mp3">
 </audio>
--->
 
 <iframe width="300" height="200"
         src="https://arena-attachments.s3.amazonaws.com/14127464/ed71ae7f8ca3e98b789f37c090b7f24d.mp4?1637899610"
         allow="autoplay 'src' https://arena-attachments.s3.amazonaws.com/14127464/ed71ae7f8ca3e98b789f37c090b7f24d.mp4?1637899610">
 </iframe>
 
+-->
+
+
     <div class="fullscreen">
         <div class="video">
           <div class="vimeo-wrapper0">
             <iframe
               src="https://player.vimeo.com/video/592385242?h=8d24ffe952&autoplay=1&quality=720p&loop=1&title=0&byline=0&portrait=0&controls=0&playsinline=0&background=1"
+             
               width="854"
               height="480"
               frameborder="0"
