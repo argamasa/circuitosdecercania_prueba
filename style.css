@@ -95,16 +95,16 @@ audio{
   transform: translate(-50%, -50%);    
 }
 
-.vimeo-wrapper1 iframe {
+.vimeo-wrapper1 img {
 
   
-  width: 14vw;
+  width: 18vw;
   height: 29.6vw;
   /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
   
   position: absolute;
-  top: 16%;
-  left: 10%;
+  top: 14%;
+  left: 12%;
   transform: translate(-50%, -50%);    
 } 
 
