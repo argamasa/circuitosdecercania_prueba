@@ -28,7 +28,7 @@ body {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
-  background-image: url("https://arena-attachments.s3.amazonaws.com/14096709/af773d345087065e48bb0e8f42e13486.svg?1637689498");
+  background-image: url("https://d2w9rnfcy7mm78.cloudfront.net/14145503/original_d05c79effb02894c8f9251c11f04e06a.svg?1638078400?bc=0");
   background-color: none;
   background-size: contain;
   background-position: center center;
@@ -46,6 +46,7 @@ position: fixed;
 top: 0.8vh;
 right: 1.5vw;
 color: #35529F;
+z-index: 100;
 
 }
 
@@ -103,7 +104,7 @@ audio{
   /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
   
   position: absolute;
-  top: 14%;
+  bottom: 30.8%;
   left: 12%;
   transform: translate(-50%, -50%);    
 } 
@@ -210,6 +211,7 @@ audio{
       width: 100%;
       height: auto;
       position: fixed;
+      z-index: 100;
    
     }
 
@@ -219,5 +221,6 @@ audio{
       height: auto;
       position: fixed;
       bottom: 0%;
+      z-index: 100;
     }
 
